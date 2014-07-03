@@ -134,7 +134,7 @@ namespace noob3d
     template<typename Function, typename Value> 
     Value avg_3p(Function f, scalar t0, scalar t1, scalar t2)
     { 
-      return ( (f(t0)-f(t1))/(x0-x1)+(f(t1)-f(t2))/(x1-x2) )/2.0;
+      return ((f(t0)-f(t1))/(t0-t1)+(f(t1)-f(t2))/(t1-t2))/2.0;
     }
     
   }//namespace diff
