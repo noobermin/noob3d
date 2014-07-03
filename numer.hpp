@@ -88,12 +88,12 @@ namespace noob3d
      *   dv/dt = f(r,v,t);
      * using leap frog algorithm.
      */
-    template<typename Value,class Homotopy> void
+    template<typename Value,class BinaryHomotopy> void
     leapfrog(Value &r,          //r
 	     Value &v,          //r-dot
 	     scalar t,      //parametrization (time)
 	     scalar dt,     //timestep
-	     Homotopy f)//Right hand side of the acceleration equation.
+	     BinaryHomotopy f)//Right hand side of the acceleration equation.
     {
       Value a1 = f(r,v,t);
       r += (v + a1*dt/2.0)*dt;
@@ -102,14 +102,14 @@ namespace noob3d
       return;
     }
     
-    template<typename Value,class Homotopy> void
+    template<typename Value,class BinaryHomotopy> void
     leapfrog(const Value &ri,    //r
 	     const Value &vi,   //r-dot
 	     Value &ro,         //r output
 	     Value &vo,         //r-dot output
 	     scalar t,      //parametrization (time)
 	     scalar dt,     //timestep
-	     Homotopy f)//Right hand side of the acceleration equation.
+	     BinaryHomotopy f)//Right hand side of the acceleration equation.
     {
       Value a1 = f(ri,t);
       ro = ri + (vi + a1*dt/2.0)*dt;
