@@ -7,10 +7,12 @@ namespace noob3d
 {
   namespace integrate
   {
-    //as a note, BinaryHomotopy should be
+    // The type BinaryHomotopy should be
     // Value (Value r, Value v ,scalar t)
     //and a Homotopy is just
-    // Value (Value r, scalar t).
+    // Value (Value r, scalar t)
+    //Finally, a Function is just a plane old path:
+    // Value (scalar t)
 
   
     //////////////////////////////////////////////////////////////////////////////////
