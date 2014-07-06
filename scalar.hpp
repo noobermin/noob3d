@@ -8,11 +8,11 @@
 
 namespace noob3d
 {
-  typedef float scalar;
+  typedef double scalar;
 
   inline scalar
   dist(scalar a, scalar b)
-  {return fabs(a-b);}
+  {return abs(a-b);}
 
   inline bool
   eq(scalar l, scalar r)
@@ -26,6 +26,9 @@ namespace noob3d
   squareRoot(scalar in)
   {return sqrt(in);}
 
+  inline scalar
+  sq(scalar in)
+  {return in*in;}
 }
 
 #endif //_SCALAR_H_
