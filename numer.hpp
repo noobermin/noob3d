@@ -84,7 +84,7 @@ namespace noob3d
     //////////////////////////////////////////////////////////////////////////////////
     //leap frog implementation
     /*
-     * leapfrog_integrate 
+     * leapfrog 
      *
      * integrate a step of a second order differential equation;
      *   dr/dt = v,

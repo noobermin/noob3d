@@ -179,8 +179,6 @@ namespace noob3d
       ret.z*=rval;
       return ret;
     }
-    // vector
-    //operator* (const matrix &rval) const;
 
     vector3d
     operator/ (scalar rval) const
