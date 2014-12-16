@@ -49,10 +49,10 @@ namespace noob3d
       T 
 	rk1,rk2,rk3,rk4,
 	vk1,vk2,vk3,vk4;
-      rk4_sample(r,             v,             rk1, vk1, dt,       f);
-      rk4_sample(r + rk1*t/2.0, v + vk1*t/2.0, rk2, vk2, t+dt/2.0, f);
-      rk4_sample(r + rk2*t/2.0, v + vk2*t/2.0, rk3, vk3, t+dt/2.0, f);
-      rk4_sample(r + rk3*t,     v + vk3*t,     rk4, vk4, t+dt,     f);
+      rk4_sample(r,              v,              rk1, vk1, dt,       f);
+      rk4_sample(r + rk1*dt/2.0, v + vk1*dt/2.0, rk2, vk2, t+dt/2.0, f);
+      rk4_sample(r + rk2*dt/2.0, v + vk2*dt/2.0, rk3, vk3, t+dt/2.0, f);
+      rk4_sample(r + rk3*dt,     v + vk3*dt,     rk4, vk4, t+dt,     f);
       
       v += (vk1/6.0 + vk2/3.0 + vk3/3.0 + vk4/6.0)*dt;
       r += (rk1/6.0 + rk2/3.0 + rk3/3.0 + rk4/6.0)*dt;
@@ -70,10 +70,10 @@ namespace noob3d
       T 
 	rk1,rk2,rk3,rk4,
 	vk1,vk2,vk3,vk4;
-      rk4_sample(ri,             vi,             rk1, vk1, t,        f);
-      rk4_sample(ri + rk1*t/2.0, vi + vk1*t/2.0, rk2, vk2, t+dt/2.0, f);
-      rk4_sample(ri + rk2*t/2.0, vi + vk2*t/2.0, rk3, vk3, t+dt/2.0, f);
-      rk4_sample(ri + rk3*t,     vi + vk3*t,     rk4, vk4, t+dt,     f);
+      rk4_sample(ri,              vi,              rk1, vk1, t,        f);
+      rk4_sample(ri + rk1*dt/2.0, vi + vk1*dt/2.0, rk2, vk2, t+dt/2.0, f);
+      rk4_sample(ri + rk2*dt/2.0, vi + vk2*dt/2.0, rk3, vk3, t+dt/2.0, f);
+      rk4_sample(ri + rk3*dt,     vi + vk3*dt,     rk4, vk4, t+dt,     f);
       
       ro = ri+(vk1/6.0 + vk2/3.0 + vk3/3.0 + vk4/6.0)*dt;
       vo = vi+(rk1/6.0 + rk2/3.0 + rk3/3.0 + rk4/6.0)*dt;
@@ -139,7 +139,13 @@ namespace noob3d
     { 
       return ((f(t0)-f(t1))/(t0-t1)+(f(t1)-f(t2))/(t1-t2))/2.0;
     }
-    
+    template<typename Value>
+    Value avg_3p(const Value& f0, scalar x0,
+		 const Value& f1, scalar x1,
+		 const Value& f2, scalar x2)
+    { 
+      return ((f0-f1)/(x0-x1)+(f1-f2)/(x1-x2))/2.0;
+    }
   }//namespace diff
   
   //A convience wrap around a map for associating pairs of numbers scalars with 
